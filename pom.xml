@@ -9,12 +9,11 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.example</groupId>
-	<artifactId>demo1-1</artifactId>
+	<artifactId>DocStatus</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>demo1-1</name>
+	<name>DocStatus</name>
 	<description>Demo project for Spring Boot</description>
-
-	<properties>
+<properties>
 		<java.version>1.8</java.version>
 	</properties>
 
@@ -30,7 +29,11 @@
             <artifactId>tomcat-embed-jasper</artifactId>
             <scope>provided</scope>
         </dependency>
-          
+          <dependency>
+	<groupId>jstl</groupId>
+	<artifactId>jstl</artifactId>
+	<version>1.2</version>
+  </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
