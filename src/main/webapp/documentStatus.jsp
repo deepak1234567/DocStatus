@@ -40,7 +40,12 @@
     	  $(".modal-body #docId").val(val2);
      
     }
-	</script>
+   
+function refreshPage(){
+    window.location.reload();
+} 
+</script>
+	 
 }
 </head>
 <body>
@@ -51,14 +56,26 @@
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
         </form>
         
-         
+         <nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Doc Status Tracking</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#">Home</a></li>
+      <li><a href="${contextPath}/createDocumentTrack">Create Doc</a></li>
+      <li><a href="${contextPath}/documentStatus">Doc Status</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a a onclick="document.forms['logoutForm'].submit()"><span class="glyphicon glyphicon-user"></span> Logout</a></li>
+      <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> ${pageContext.request.userPrincipal.name}</a></li>
+    </ul>
+  </div>
+</nav>
 
-        <h2>Welcome ${pageContext.request.userPrincipal.name} |
-         <a onclick="document.forms['logoutForm'].submit()">Logout</a>
-         |<a href="${contextPath}/createDocumentTrack">Create Doc.</a>
-         |<a href="${contextPath}/documentStatus"> Doc Status</a>
-        </h2>
+      
         <span>${msg}</span>
+ 
        <table class="table table-sm table-dark">
   <thead>
     <tr>
@@ -81,7 +98,7 @@
 		         <td><c:out value="${item.source}" /></td>
 		         <td><c:out value="${item.destination}" /></td>
 		         <td>  
-            		<button type="button" id="${item}" onclick="callMe('${item.entryPoint}','${item.id}')"
+            		<button type="button" id="${item}" onclick="callMe('${item.entryPoint}','${item.id}');"
 class="open-Dialog btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Edit</button>
         		 
        			 </td>
@@ -90,7 +107,7 @@ class="open-Dialog btn btn-info btn-lg" data-toggle="modal" data-target="#myModa
 		  </c:forEach>
 		</tbody>
 </table>
-    </c:if>
+   
 
 </div>
 <!-- /container -->
@@ -132,7 +149,9 @@ class="open-Dialog btn btn-info btn-lg" data-toggle="modal" data-target="#myModa
   </div>
 </div>
 </body>
+ </c:if> 
 </html>
+
 <script type="text/javascript">
 var statusObj = {
 	     'Initiate Document':'101',
