@@ -16,6 +16,11 @@
     <title>Create an account</title>
 
     <link href="${contextPath}/resources/css/bootstrap.min.css" rel="stylesheet">
+    
+    
+    <link rel="stylesheet" type="text/css" href="${contextPath}/resources/css/datatables.min.css"/>
+ 
+	<script type="text/javascript" src="${contextPath}/resources/js/datatables.min.js"></script>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -30,8 +35,22 @@
         <form id="logoutForm" method="POST" action="${contextPath}/logout">
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
         </form>
+        
+         
 
-        <h2>Welcome ${pageContext.request.userPrincipal.name} | <a onclick="document.forms['logoutForm'].submit()">Logout</a></h2>
+        <h2>Welcome ${pageContext.request.userPrincipal.name} | <a onclick="document.forms['logoutForm'].submit()">Logout</a>
+        |<a href="${contextPath}/createDocumentTrack">Create Doc</a>
+        |<a href="${contextPath}/documentStatus"> Doc Status</a>
+        </h2>
+        
+        
+		<table>
+		  <c:forEach items="${list}" var="item">
+		    <tr>
+		      <td><c:out value="${item}" /></td>
+		    </tr>
+		  </c:forEach>
+		</table>
 
     </c:if>
 
